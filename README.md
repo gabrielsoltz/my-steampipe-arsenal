@@ -2,8 +2,6 @@
 
 My Arsenal of Steampipe Queries
 
-# Queries
-
 - [Check Route53 Inactive Alias](#check-route53-inactive-alias-subdomain-takeover)
 
 ## Check Route53 Inactive Alias (Subdomain Takeover)
