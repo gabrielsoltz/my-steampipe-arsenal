@@ -1,2 +1,2 @@
 # my-steampipe-arsenal
-My Steampipe Queries Arsenal
+My Arsenal of Steampipe Queries
