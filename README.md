@@ -3,6 +3,8 @@
 My Arsenal of Steampipe Queries
 
 - [Check Route53 Inactive Alias](#check-route53-inactive-alias-subdomain-takeover)
+- [Check Security Groups with Unkown private sources](#check-security-groups-with-unkown-private-sources)
+- [Check Security Groups with Unkown public sources](#check-security-groups-with-unkown-public-sources)
 
 ## Check Route53 Inactive Alias (Subdomain Takeover)
 
