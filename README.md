@@ -14,10 +14,10 @@ See the query in [check-route53-inactive-alias.sql](check-route53-inactive-alias
 
 This query examines all security groups in your AWS account and identifies security groups that allow traffic from unknown private sources. It retrieves all security groups that allow inbound traffic from private IP ranges that are not part of your VPC CIDR block. This query helps you identify security groups that may have overly permissive inbound rules and could potentially expose your resources to unauthorized access. This query takes doesn't only matches CIDR to CIDR, but instead makes uses of Postgres network functions to check if hosts or networks are included in other networks (subnetting). This query will exclude `0.0.0.0/0` from the results, as it's not what we are looking for.
 
-See the query in [check-security-groups-unknown-private-sources.sql](check-security-groups-unknown-private-sources.sql)
+See the query in [check-sgs-unknown-sources-private.sql](check-sgs-unknown-sources-private.sql)
 
 ## Check Security Groups with Unkown public sources
 
 This query examines all security groups in your AWS account and identifies security groups that allow traffic from unknown public sources. It retrieves all security groups that allow inbound traffic from public IP hosts and checks all your ENIs to see if the public IP is associated with any of your resources. This query will show you at a glance which security groups are allowing traffic from unknown public sources. This query will exclude `0.0.0.0/0` from the results, as it's not what we are looking for.
 
-See the query in [check-security-groups-unknown-public-sources.sql](check-security-groups-unknown-public-sources.sql)
+See the query in [check-sgs-unknown-sources-public.sql](check-sgs-unknown-sources-public.sql)
