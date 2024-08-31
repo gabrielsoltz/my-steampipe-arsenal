@@ -1,6 +1,6 @@
 # my-steampipe-arsenal
 
-My Arsenal of Steampipe Queries
+My Arsenal of [Steampipe](https://steampipe.io/) Queries:
 
 - [Check Route53 Inactive Alias](#check-route53-inactive-alias-subdomain-takeover)
 - [Check Security Groups with Unknown private sources](#check-security-groups-with-Unknown-private-sources)
@@ -27,5 +27,13 @@ See the query in [check-sgs-unknown-sources-public.sql](check-sgs-unknown-source
 
 ## Identify Exposed Secrets in AWS
 
-This one is a combination of differen queries that you can execute using the shell script `identify-exposed-secrets-in-aws.sh` for fetching configurations from different AWS services, where poeple usually adds sectres. It fetches the information and generate a temporary file, which is then scanned with Turfflehog. Turfflehog will analyze those files and provides findings if those findings were correctly validated (`--only-verified` )
+This script, `identify-exposed-secrets-in-aws.sh`, is a combination of different queries that can be executed to fetch configurations from various AWS services where secrets are commonly exposed. The script gathers information from these services and generates a temporary file, which is then scanned with TruffleHog. TruffleHog analyzes the files to identify verified secrets.
+The queries fetch data from the following sources:
+- EC2 instance user data
+- Launch Template user data
+- Lambda environment variables
+- CloudFormation stack outputs
 
+Run: `./identify-exposed-secrets-in-aws.sh`
+
+See the query in [identify-exposed-secrets-in-aws.sh](identify-exposed-secrets-in-aws.sh)
