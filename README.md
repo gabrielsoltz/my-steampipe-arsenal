@@ -27,7 +27,7 @@ See the query in [check-sgs-unknown-sources-public.sql](check-sgs-unknown-source
 
 ## Identify Exposed Secrets in AWS
 
-This script, `identify-exposed-secrets-in-aws.sh`, is a combination of different queries that can be executed to fetch configurations from various AWS services where secrets are commonly exposed. The script gathers information from these services and generates a temporary file, which is then scanned with TruffleHog. TruffleHog analyzes the files to identify verified secrets.
+This script, `identify-exposed-secrets-in-aws.sh`, is a combination of different queries that can be executed to fetch configurations from various AWS services where secrets are commonly exposed. The script gathers information from these services and generates a temporary file, which is then scanned with TruffleHog. TruffleHog analyzes the files to identify verified secrets. (You need to have [TruffleHog](https://github.com/trufflesecurity/trufflehog) installed on your system to run this script.)
 The queries fetch data from the following sources:
 - EC2 instance user data
 - Launch Template user data
