@@ -1,3 +1,8 @@
+/***********************************
+**  Steampipe Query to check for Security Group rules that allow traffic from unknown public sources.
+**  Author: Gabriel Soltz (https://github.com/gabrielsoltz)
+************************************/
+
 WITH public_ips AS (
     SELECT
         eni.association_public_ip AS public_ip

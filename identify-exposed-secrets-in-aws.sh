@@ -1,5 +1,9 @@
-# Description: This script is used to scan for secrets in AWS resources using Trufflehog and Steampipe.
+#***********************************
+#  This script is used to scan for secrets in AWS resources using Trufflehog and Steampipe.
+#  Author: Gabriel Soltz (https://github.com/gabrielsoltz)
+************************************/
 
+# Description: 
 export TRUFFLEHOG_OPTIONS="--fail --no-update --only-verified"
 
 echo "Scanning for exposed secrets in AWS services..."

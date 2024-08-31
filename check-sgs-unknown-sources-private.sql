@@ -1,3 +1,8 @@
+/***********************************
+**  Steampipe Query to check for Security Group rules that allow traffic from unknown private sources.
+**  Author: Gabriel Soltz (https://github.com/gabrielsoltz)
+************************************/
+
 WITH vpc_subnets AS (
     SELECT
         s.subnet_id,
