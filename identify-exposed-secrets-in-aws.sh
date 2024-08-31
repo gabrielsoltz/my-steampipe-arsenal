@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 #***********************************
 #  This script is used to scan for secrets in AWS resources using Trufflehog and Steampipe.
 #  Author: Gabriel Soltz (https://github.com/gabrielsoltz)
