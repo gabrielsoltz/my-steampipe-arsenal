@@ -1,3 +1,8 @@
+/***********************************
+**  Steampipe Query to check for inactive Route53 Alias records.
+**  Author: Gabriel Soltz (https://github.com/gabrielsoltz)
+************************************/
+
 WITH route53_alias AS (
   SELECT
     r53.name as record_name,

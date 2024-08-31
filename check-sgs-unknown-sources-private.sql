@@ -1,3 +1,8 @@
+/***********************************
+**  Steampipe Query to check for Security Group rules that allow traffic from unknown private sources.
+**  Author: Gabriel Soltz (https://github.com/gabrielsoltz)
+************************************/
+
 WITH vpc_subnets AS (
     SELECT
         s.subnet_id,
@@ -46,10 +51,14 @@ SELECT
 FROM 
     security_group_rules AS r
 WHERE
+    -- Check if the rule is an ingress rule
     r.is_egress = FALSE
+    -- Exclude rules that allow all traffic
     AND r.cidr_ipv4 != '0.0.0.0/0'
+    -- Exclude rules that are not IP based
     AND r.cidr_ipv4 IS NOT NULL
     AND (
+        -- Exclude public CIDR ranges, and leaves only private CIDR ranges
         r.cidr_ipv4::cidr <<= '10.0.0.0/8'::cidr
         OR r.cidr_ipv4::cidr <<= '172.16.0.0/12'::cidr
         OR r.cidr_ipv4::cidr <<= '192.168.0.0/16'::cidr
