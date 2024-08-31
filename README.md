@@ -3,8 +3,9 @@
 My Arsenal of Steampipe Queries
 
 - [Check Route53 Inactive Alias](#check-route53-inactive-alias-subdomain-takeover)
-- [Check Security Groups with Unkown private sources](#check-security-groups-with-unkown-private-sources)
-- [Check Security Groups with Unkown public sources](#check-security-groups-with-unkown-public-sources)
+- [Check Security Groups with Unknown private sources](#check-security-groups-with-Unknown-private-sources)
+- [Check Security Groups with Unknown public sources](#check-security-groups-with-Unknown-public-sources)
+- [Identify Exposed Secrets in AWS](#identify-exposed-secrets-in-aws)
 
 ## Check Route53 Inactive Alias (Subdomain Takeover)
 
@@ -12,14 +13,19 @@ This query examines all [Route53 records of type Alias](https://docs.aws.amazon.
 
 See the query in [check-route53-inactive-alias.sql](check-route53-inactive-alias.sql)
 
-## Check Security Groups with Unkown private sources
+## Check Security Groups with Unknown private sources
 
 This query examines all security groups in your AWS account and identifies security groups that allow traffic from unknown private sources. It retrieves all security groups that allow inbound traffic from private IP ranges that are not part of your VPC CIDR block. This query helps you identify security groups that may have overly permissive inbound rules and could potentially expose your resources to unauthorized access. This query doesn't only match CIDR to CIDR, but instead makes use of Postgres network functions to check if hosts or networks are included in other networks (subnetting). This query will exclude `0.0.0.0/0` from the results, as it's not what we are looking for.
 
 See the query in [check-sgs-unknown-sources-private.sql](check-sgs-unknown-sources-private.sql)
 
-## Check Security Groups with Unkown public sources
+## Check Security Groups with Unknown public sources
 
 This query examines all security groups in your AWS account and identifies security groups that allow traffic from unknown public sources. It retrieves all security groups that allow inbound traffic from public IP hosts and checks all your ENIs to see if the public IP is associated with any of your resources. This query will show you at a glance which security groups are allowing traffic from unknown public sources. This query will exclude `0.0.0.0/0` from the results, as it's not what we are looking for.
 
 See the query in [check-sgs-unknown-sources-public.sql](check-sgs-unknown-sources-public.sql)
+
+## Identify Exposed Secrets in AWS
+
+This one is a combination of differen queries that you can execute using the shell script `identify-exposed-secrets-in-aws.sh` for fetching configurations from different AWS services, where poeple usually adds sectres. It fetches the information and generate a temporary file, which is then scanned with Turfflehog. Turfflehog will analyze those files and provides findings if those findings were correctly validated (`--only-verified` )
+
