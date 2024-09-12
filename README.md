@@ -33,6 +33,7 @@ The queries fetch data from the following services:
 - Launch Template user data
 - Lambda environment variables
 - CloudFormation stack outputs
+- SSM Parameters
 
 Run: `./identify-exposed-secrets-in-aws.sh`
 
