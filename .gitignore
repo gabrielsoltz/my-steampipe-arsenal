@@ -37,6 +37,7 @@ override.tf.json
 terraform.rc
 
 # Outputs
+outputs/*-urls
 outputs/*.html
 outputs/*.csv
 outputs/*.json

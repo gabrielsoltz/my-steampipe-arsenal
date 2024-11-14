@@ -3,12 +3,17 @@
 #  This script is used to scan for secrets in AWS resources using Trufflehog and Steampipe.
 #  Author: Gabriel Soltz (https://github.com/gabrielsoltz)
 #************************************
+# Requirements:
+# - Steampipe (https://steampipe.io/downloads)
+# - Trufflehog (https://github.com/trufflesecurity/trufflehog)
 
 # Trufflehog options
-export TRUFFLEHOG_OPTIONS="--fail --no-update --only-verified --json"
-D=$(date '+%Y-%m-%d-%H-%M-%S')
-export FILE_DATA_TO_SCAN="outputs/aws-outputs-$D.json"
-export FILE_OUTPUT="outputs/aws-trufflehog-output-$D.json"
+TRUFFLEHOG_OPTIONS="--fail --no-update --only-verified --json"
+
+# Output files
+DATE=$(date '+%Y-%m-%d-%H-%M-%S')
+FILE_DATA_TO_SCAN="outputs/aws-outputs-$DATE.json"
+FILE_OUTPUT="outputs/aws-trufflehog-output-$DATE.json"
 
 echo "Scanning for exposed secrets in AWS services..."
 
